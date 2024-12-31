@@ -16,6 +16,40 @@
             justify-content: center;
             align-items: center;
             padding: 40px 20px;
+            overflow: hidden;
+        }
+
+        #entry-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+
+        #entry-text {
+            color: white;
+            font-size: 1.5em;
+            text-align: center;
+            animation: pulse 2s infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .main-content {
+            display: none;
         }
 
         .grid {
@@ -89,58 +123,95 @@
             display: block;
             margin-top: 15px;
         }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
-    <div class="grid">
-        <div class="card">
-            <a href="rio.html" style="text-decoration: none; color: inherit;">
-                <img src="riopfp.png" alt="Rio" class="profile-pic">
-                <div class="name">rio</div>
-                <div class="tag">owner</div>
-            </a>
-            <div class="social-icons">
-                <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" 
-                    alt="Discord" 
-                    class="social-icon" 
-                    onclick="copyDiscordTag('@foreverist')">
-                <a href="https://t.me/revvs" target="_blank" class="social-link">
-                    <img src="telegram.svg" alt="Telegram" class="social-icon telegram">
-                </a>
-            </div>
-        </div>
+    <div id="entry-screen">
+        <div id="entry-text">press here to enter mural :D</div>
+    </div>
 
-        <div class="card">
-            <a href="surf.html" style="text-decoration: none; color: inherit;">
-                <img src="surf.png" alt="Surf" class="profile-pic">
-                <div class="name">surf</div>
-                <div class="tag">dev</div>
-            </a>
-            <div class="social-icons">
-                <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" 
-                    alt="Discord" 
-                    class="social-icon" 
-                    onclick="copyDiscordTag('@selfending')">
-                <a href="https://t.me/swatzone" target="_blank" class="social-link">
-                    <img src="telegram.svg" alt="Telegram" class="social-icon telegram">
-                </a>
-            </div>
-        </div>
+    <audio id="background-audio" loop>
+        <source src="mainpage.mp3" type="audio/mpeg">
+    </audio>
 
-        <div class="card">
-            <a href="flood.html" style="text-decoration: none; color: inherit;">
-                <img src="flood.png" alt="Flood" class="profile-pic">
-                <div class="name">flood</div>
-                <div class="tag">owner</div>
-            </a>
-            <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" 
-                alt="Discord" 
-                class="social-icon" 
-                onclick="copyDiscordTag('@foolness')">
+    <div class="main-content">
+        <div class="grid">
+            <div class="card">
+                <a href="rio.html" style="text-decoration: none; color: inherit;">
+                    <img src="riopfp.png" alt="Rio" class="profile-pic">
+                    <div class="name">rio</div>
+                    <div class="tag">owner</div>
+                </a>
+                <div class="social-icons">
+                    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" 
+                        alt="Discord" 
+                        class="social-icon" 
+                        onclick="copyDiscordTag('@foreverist')">
+                    <a href="https://t.me/revvs" target="_blank" class="social-link">
+                        <img src="telegram.svg" alt="Telegram" class="social-icon telegram">
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <a href="surf.html" style="text-decoration: none; color: inherit;">
+                    <img src="surf.png" alt="Surf" class="profile-pic">
+                    <div class="name">surf</div>
+                    <div class="tag">dev</div>
+                </a>
+                <div class="social-icons">
+                    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" 
+                        alt="Discord" 
+                        class="social-icon" 
+                        onclick="copyDiscordTag('@selfending')">
+                    <a href="https://t.me/swatzone" target="_blank" class="social-link">
+                        <img src="telegram.svg" alt="Telegram" class="social-icon telegram">
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <a href="flood.html" style="text-decoration: none; color: inherit;">
+                    <img src="flood.png" alt="Flood" class="profile-pic">
+                    <div class="name">flood</div>
+                    <div class="tag">owner</div>
+                </a>
+                <div class="social-icons">
+                    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" 
+                        alt="Discord" 
+                        class="social-icon" 
+                        onclick="copyDiscordTag('@foolness')">
+                    <a href="https://t.me/behavioured" target="_blank" class="social-link">
+                        <img src="telegram.svg" alt="Telegram" class="social-icon telegram">
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
+        document.getElementById('entry-screen').addEventListener('click', function() {
+            // Start playing audio
+            const audio = document.getElementById('background-audio');
+            audio.volume = 1;
+            audio.play();
+            
+            // Hide entry screen
+            this.style.opacity = '0';
+            setTimeout(() => {
+                this.style.display = 'none';
+                // Show main content
+                document.querySelector('.main-content').style.display = 'block';
+            }, 500);
+        });
+
         function copyDiscordTag(tag) {
             navigator.clipboard.writeText(tag).then(() => {
                 window.open('discord://app', '_blank');
