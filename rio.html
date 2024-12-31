@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rio rio rio rio rio rio rio rio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('riobackround.png') center/cover no-repeat fixed;
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        /* Rain effect */
+        .rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .rain span {
+            position: absolute;
+            width: 1px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: rain linear infinite;
+        }
+        
+        @keyframes rain {
+            0% {
+                transform: translateY(-100vh);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        .content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .profile {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            min-width: 300px;
+        }
+
+        .profile-pic {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .tag {
+            font-size: 0.6em;
+            margin-top: 5px;
+            color: #ff0000;
+            letter-spacing: 1px;
+            min-height: 1.2em;
+        }
+
+        .status {
+            font-size: 0.6em;
+            margin-top: 5px;
+            color: #ff0000;
+            letter-spacing: 1px;
+            min-height: 1.2em;
+            animation: fadeInOut 8s infinite;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7),
+                         0 0 20px rgba(255, 0, 0, 0.5),
+                         0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInOut {
+            0%, 45% {
+                opacity: 1;
+                transform: translateY(0);
+                text-shadow: 0 0 10px rgba(255, 0, 0, 0.7),
+                            0 0 20px rgba(255, 0, 0, 0.5),
+                            0 0 30px rgba(255, 0, 0, 0.3);
+            }
+            50% {
+                opacity: 0;
+                transform: translateY(10px);
+                text-shadow: 0 0 5px rgba(255, 0, 0, 0.3),
+                            0 0 10px rgba(255, 0, 0, 0.2),
+                            0 0 15px rgba(255, 0, 0, 0.1);
+            }
+            55%, 95% {
+                opacity: 1;
+                transform: translateY(0);
+                text-shadow: 0 0 10px rgba(255, 0, 0, 0.7),
+                            0 0 20px rgba(255, 0, 0, 0.5),
+                            0 0 30px rgba(255, 0, 0, 0.3);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(10px);
+                text-shadow: 0 0 5px rgba(255, 0, 0, 0.3),
+                            0 0 10px rgba(255, 0, 0, 0.2),
+                            0 0 15px rgba(255, 0, 0, 0.1);
+            }
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 18px;
+            opacity: 0.7;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            object-fit: contain;
+        }
+
+        .social-icon.telegram {
+            filter: brightness(0) invert(1);
+        }
+
+        .social-link {
+            text-decoration: none;
+        }
+
+        .views {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.5em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .views::before {
+            content: "👁";
+            font-size: 1.2em;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.5em;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .name-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .knife-emoji {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .knife-emoji::before {
+            content: "die";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: #ff0000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-shadow: 0 0 10px #ff0000,
+                         0 0 20px #ff0000,
+                         0 0 30px #ff0000;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+            border: 1px solid #ff0000;
+            margin-bottom: 5px;
+        }
+
+        .knife-emoji:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .knife-badge {
+            width: 20px;
+            height: 20px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-3px) rotate(5deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-audio" autoplay loop playsinline preload="auto">
+        <source src="rio.mp3" type="audio/mpeg">
+    </audio>
+    <div class="rain" id="rain"></div>
+    <a href="index.html" class="back-button">← Back</a>
+    <div class="content">
+        <div class="profile">
+            <img src="riopfp.png" alt="Rio" class="profile-pic">
+            <div class="name-container">
+                <h1>RIO</h1>
+                <span class="knife-emoji">🔪</span>
+            </div>
+            <div class="status" id="status-text">ur all fucking losers</div>
+            <div class="social-icons">
+                <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" 
+                    alt="Discord" 
+                    class="social-icon"
+                    onclick="copyDiscordTag('@foreverist')">
+                <a href="https://t.me/revvs" target="_blank" class="social-link">
+                    <img src="telegram.svg" alt="Telegram" class="social-icon telegram">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="views">31</div>
+    <script>
+        // Try to play audio as soon as possible
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('background-audio');
+            
+            const startAudio = () => {
+                audio.play();
+                audio.volume = 1;
+                audio.muted = false;
+            };
+
+            // Try multiple times with different triggers
+            startAudio();
+            setTimeout(startAudio, 100);
+            setTimeout(startAudio, 500);
+            setTimeout(startAudio, 1000);
+            setTimeout(startAudio, 2000);
+
+            // Also try on any interaction
+            const events = ['click', 'touchstart', 'keydown', 'scroll', 'mousemove'];
+            events.forEach(event => {
+                document.addEventListener(event, startAudio, { once: true });
+            });
+
+            // Keep trying periodically
+            setInterval(startAudio, 1000);
+        });
+
+        // Create rain drops
+        const rainContainer = document.getElementById('rain');
+        const drops = 100;
+
+        for (let i = 0; i < drops; i++) {
+            const drop = document.createElement('span');
+            drop.style.left = Math.random() * 100 + '%';
+            drop.style.animationDuration = (Math.random() * 1 + 0.5) + 's';
+            drop.style.animationDelay = Math.random() + 's';
+            rainContainer.appendChild(drop);
+        }
+
+        // Alternate status messages
+        const statusElement = document.getElementById('status-text');
+        const messages = [
+            "ur all fucking losers",
+            "i love my perfect gf lai"
+        ];
+        let currentMessage = 0;
+
+        setInterval(() => {
+            currentMessage = (currentMessage + 1) % messages.length;
+            statusElement.textContent = messages[currentMessage];
+        }, 4000);
+
+        function copyDiscordTag(tag) {
+            navigator.clipboard.writeText(tag).then(() => {
+                window.open('discord://app', '_blank');
+            });
+        }
+    </script>
+</body>
+</html>
